@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Delete item</title>
+    <link rel="stylesheet"  type="text/css" th:href="@{/css/pagesStyle.css}" />
+</head>
+<body>
+    <form method="post" th:action="@{/delete}" th:object="${deleteItemDTO}">
+        <div><label for="id">     Item id:         <input type="text" name="id" th:value="${id}"/> </label></div>
+        <div><label for="reason"> Deletion reason: <input type="text" name="reason" value="Not valid"/> </label></div>
+
+        <div><input type="submit" value="Delete!"/></div>
+    </form>
+
+    <div class="errors_container">
+        <div th:each="error: ${errors}" class="error_msg">
+            <span th:text="${error}"> error </span>
+        </div>
+    </div>
+</body>
+</html>
