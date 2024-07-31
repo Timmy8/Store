@@ -5,11 +5,12 @@
     <link rel="stylesheet"  type="text/css" th:href="@{/css/pagesStyle.css}" />
 </head>
 <body>
-    <form method="post" th:action="@{/delete}" th:object="${deleteItemDTO}">
+    <a href="/items"> <input type="submit" value="Main page" sstyle="margin-left: 1%; margin-top: 1%;"/> </a>
+    <form method="post" th:action="@{/delete}" th:object="${deleteItemDTO}" class="form_template">
         <div><label for="id">     Item id:         <input type="text" name="id" th:value="${id}"/> </label></div>
         <div><label for="reason"> Deletion reason: <input type="text" name="reason" value="Not valid"/> </label></div>
 
-        <div><input type="submit" value="Delete!"/></div>
+        <div><input type="submit" value="Delete!" id="submit_btn"/></div>
     </form>
 
     <div class="errors_container">

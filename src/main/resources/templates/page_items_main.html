@@ -47,11 +47,11 @@
         <a th:href="@{/items/{id}(id=${item.id})}"> <img class="book_image" th:src="@{/{link}(link=${item.imageURL})}" alt="Book image!"/></a>
         <p><strong><span th:text="${item.name}">ITEM NAME</span></strong></p>
         <p><span th:text="${#dates.format(item.createdAt, 'dd.MM / HH:mm')}">CREATION DATE </span></p>
-        <strong style="font-size: 25px; text-align: center;"><span th:text="${item.price}">50</span>$</strong>
-
+        <strong style="font-size: 25px; text-align: center;"><span th:text="${item.price}">50</span>$</strong><br>
+        <a th:href="@{/items/{id}(id=${item.id})}"><small style="color: #6E7486; text-decoration: underline">see full</small></a>
         <div th:if="${item.available}" class="buttons_container">
-            <a th:href="@{/purchase/{id}(id=${item.id})}"><input class="buy_btn" type="submit" value="Buy now!"/></a>
-            <form method="post" th:action="@{/cart?id={id}(id=${item.id})}"><input class="submit_input" type="submit" value="Add to cart!"/></form>
+            <a th:href="@{/purchase/{id}(id=${item.id})}" class="catalogBtn1"><input id="buy_btn" type="submit" value="Buy now!"/></a>
+            <form method="post" th:action="@{/cart?id={id}(id=${item.id})}" class="catalogBtn2"><input id="submit_btn" type="submit" value="Add to cart!"/></form>
         </div>
         <div th:unless="${item.available}" class="unavailable_item">
             <strong>Item unavailable!</strong>

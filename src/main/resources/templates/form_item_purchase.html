@@ -5,7 +5,9 @@
     <link rel="stylesheet"  type="text/css" th:href="@{/css/pagesStyle.css}" />
 </head>
 <body>
-<form method="post" th:action="@{/purchase/{id}(id=${itemId})}" th:object="${deliveryAddress}">
+<a href="/items"><input type="submit" value="Main page" style="margin-left: 1%; margin-top: 1%;"/></a>
+
+<form method="post" th:action="@{/purchase/{id}(id=${itemId})}" th:object="${deliveryAddress}" class="form_template">
     <div><label> Your full name: <input type="text" name="fullName"/> </label></div>
     <div><label> City:           <input type="text" name="city"/> </label></div>
     <div><label> Street:         <input type="text" name="street"/> </label></div>
@@ -13,7 +15,7 @@
     <div><label> ZIP code:       <input type="text" name="zip"/> </label></div>
     <div><label> Phone number:   <input type="text" name="phoneNumber"/> </label></div>
 
-    <div><input type="submit" value="Submit!"/></div>
+    <div><input type="submit" value="Submit!" id="submit_btn"/></div>
 </form>
 <div style="margin-top: 5px">
     <p style="margin: 0" th:each="error: ${errors}">

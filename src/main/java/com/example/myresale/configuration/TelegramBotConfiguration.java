@@ -11,14 +11,14 @@ import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 @Configuration
 public class TelegramBotConfiguration {
     @Value("${telegram.bot.name}")
-    private String botToken;
-    @Value("${telegram.bot.token}")
     private String botName;
+    @Value("${telegram.bot.token}")
+    private String botToken;
 
     // Telegram bot API initialize
     @Bean
     public MyResaleNotificationBot initTelegramBot(){
-        MyResaleNotificationBot bot = new MyResaleNotificationBot(botName, botToken);
+        MyResaleNotificationBot bot = new MyResaleNotificationBot(botToken, botName);
         try{
             var botsApi = new TelegramBotsApi(DefaultBotSession.class);
             botsApi.registerBot(bot);

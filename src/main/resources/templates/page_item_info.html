@@ -1,28 +1,41 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6" >
 <head>
     <title>Item page</title>
     <link rel="stylesheet"  type="text/css" th:href="@{/css/pagesStyle.css}" />
 <body>
-    <h1>Item information:</h1>
     <div class="top_navigation">
-        <div class="left_corner_buttons">
+        <div class="left_corner_buttons" style="margin-top: 3%;">
             <a href="/items"> <input type="submit" value="Main page"/> </a>
+        </div>
+        <div class="welcome_title">
+            <h1>Item information:</h1>
+        </div>
+        <div class="right_corner_buttons" style="margin-top: 3%;">
+            <div sec:authorize="isAnonymous()">
+                <a th:href="@{/registration}"><input type="submit" value="Registration"/></a>
+                <a th:href="@{/login}"><input type="submit" value="Login"/></a>
+            </div>
+            <div sec:authorize="isFullyAuthenticated()">
+                <form method="get" th:action="@{/logout}"><input type="submit" value="Logout"/></form>
+                <a th:href="@{/cart}"><input type="submit" value="Your cart"/></a>
+            </div>
         </div>
     </div>
     <div class="item_preview">
         <img class="book_image" th:src="@{/{link}(link=${item.imageURL})}" alt="Book image!"/>
-        <p><strong>Item name:       </strong> "<span th:text="${item.name}">              ITEM NAME</span>"</p>
-        <p><strong>Item description:</strong> "<span th:text="${item.description}">ITEM DESCRIPTION</span>"</p>
-        <p><strong>Item author:     </strong> "<span th:text="${item.author}">          ITEM AUTHOR</span>"</p>
-        <p><strong>Item price:      </strong>  <span th:text="${item.price}">            ITEM PRICE</span> </p>
-        <p><strong>Creator:         </strong>  <span th:text="${item.createdBy.username}"> CREATOR </span> </p>
-        <p><strong>Creation date:   </strong>  <span th:text="${#dates.format(item.createdAt, 'dd.MM / HH:mm')}">   CREATION DATE </span> </p>
+        <p><strong>Book name: </strong><i th:text="${item.name}" style="display: inline;">BOOK NAME</i></p>
+        <p><strong>Item description: </strong><i th:text="${item.description}">BOOK DESCRIPTION</i></p>
+        <p><strong>Item author: </strong><span th:text="${item.author}">BOOK AUTHOR</span></p>
+        <p><strong>Item price: </strong><span th:text="${item.price}">BOOK PRICE</span></p>
+        <p><strong>Creator: </strong><span th:text="${item.createdBy.username}">CREATOR</span></p>
+        <p><strong>Creation date: </strong><span th:text="${#dates.format(item.createdAt, 'dd.MM / HH:mm')}">CREATION DATE</span></p>
 
         <div th:if="${item.available}" class="buttons_container">
-            <a th:href="@{/purchase/{id}(id=${item.id})}">                   <input class="buy_btn" type="submit" value="Buy now!"/></a>
-            <form method="post" th:action="@{/cart?id={id}(id=${item.id})}"> <input class="submit_input" type="submit" value="Add to cart!"/></form>
-            <a th:href="@{/delete/{id}(id=${item.id})}">                     <input type ="submit" value="Delete item!"/></a>
+            <a th:href="@{/purchase/{id}(id=${item.id})}" class="previewBtn1"><input class="buy_btn" type="submit" value="Buy now!"/></a>
+            <form method="post" th:action="@{/cart?id={id}(id=${item.id})}" class="previewBtn2"> <input class="submit_input" type="submit" value="Add to cart!"/></form>
+            <a th:href="@{/delete/{id}(id=${item.id})}" class="previewBtn3"><input id="delete_btn" type ="submit" value="Delete item!"/></a>
        </div>
         <div th:unless="${item.available}" class="unavailable_item">
             <strong>Item unavailable!</strong>
