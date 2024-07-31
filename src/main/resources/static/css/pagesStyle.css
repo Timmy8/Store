@@ -57,7 +57,6 @@ input:hover {
     box-shadow: 0 0 10px #719ECE;
 }
 
-<<<<<<< HEAD
 .items_list {
     width: 100%;
     float: left;
@@ -76,7 +75,8 @@ input:hover {
     margin: 10px;
     padding: 3%;
     width: 25%;
-=======
+}
+
 .top_navigation {
     display: grid;
     grid-template-columns: 25% 50% 25%;
@@ -204,7 +204,6 @@ input:hover {
 .item {
     text-align: center;
     margin: 1%;
->>>>>>> 5891125 (DEVELOPER add some fix)
 }
 
 .item p, span {
@@ -306,6 +305,11 @@ input:hover {
     font-weight: bold;
     font-size: 13px;
     width: 60%;
+}
+
+.buy_btn{
+    background-color: black;
+    color: white;
 }
 
 .username {

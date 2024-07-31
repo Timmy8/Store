@@ -20,9 +20,9 @@
         <p><strong>Creation date:   </strong>  <span th:text="${#dates.format(item.createdAt, 'dd.MM / HH:mm')}">   CREATION DATE </span> </p>
 
         <div th:if="${item.available}" class="buttons_container">
+            <a th:href="@{/purchase/{id}(id=${item.id})}">                   <input class="buy_btn" type="submit" value="Buy now!"/></a>
             <form method="post" th:action="@{/cart?id={id}(id=${item.id})}"> <input class="submit_input" type="submit" value="Add to cart!"/></form>
-            <a th:href="@{/purchase/{id}(id=${item.id})}">                   <input class="submit_input" type="submit" value="Buy now!"/></a>
-            <!--<a th:href="@{/delete/{id}(id=${item.id})}">                     <input type ="submit" value="Delete item!"/></a> -->
+            <a th:href="@{/delete/{id}(id=${item.id})}">                     <input type ="submit" value="Delete item!"/></a>
        </div>
         <div th:unless="${item.available}" class="unavailable_item">
             <strong>Item unavailable!</strong>
