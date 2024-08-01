@@ -15,6 +15,7 @@ body {
     height: 100%;
     background-color: #F5F5F5;
     margin: 0;
+    font-family: 'Montserrat', sans-serif;
 }
 p {
     margin: 1%;
@@ -38,7 +39,7 @@ h2 {
     letter-spacing: 2px;
 }
 a {
-    color: rgb(0,0,0);
+    color: black;
     text-decoration: none;
 }
 
@@ -57,6 +58,84 @@ input:hover {
     box-shadow: 0 0 10px #719ECE;
 }
 
+@media (max-width: 5000px) {
+    .items_list {
+        grid-template-columns: repeat(3, 28%);
+    }
+
+    .form_container{
+            width: 30%;
+            margin-top: 10%;
+            margin-left: 35%;
+    }
+
+    .item_preview{
+        width: 30%;
+    }
+
+    .cart_item_image {
+        width: 30px;
+        height: 30px;
+    }
+
+    .cart_checkbox{
+        transform: scale(2);
+        height: auto;
+        margin-top: 20%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .items_list {
+        grid-template-columns: repeat(2, 42%);
+    }
+
+    .form_container{
+        width: 50%;
+        margin-left: 25%;
+    }
+
+    .item_preview{
+        width: 60%;
+    }
+
+    .cart_item_image {
+        width: 20px;
+        height: 20px;
+    }
+
+    .cart_checkbox{
+        margin-top: 30%;
+    }
+}
+
+@media (max-width: 800px) {
+    .items_list {
+        grid-template-columns: repeat(1, 84%);
+    }
+
+    .form_container{
+        width: 70%;
+        margin-left: 15%;
+    }
+
+    .item_preview{
+        width: 80%;
+    }
+
+    .form_page{
+        margin-top: 10%;
+    }
+
+    .cart_item_image {
+        width: 10px;
+        height: 10px;
+    }
+
+    .cart_checkbox{
+        margin-top: 40%;
+    }
+}
 
 .top_navigation {
     display: grid;
@@ -154,37 +233,15 @@ input:hover {
 }
 
 .items_list {
-        width: 100%;
         display: grid;
         font-size: 17px;
-        margin-left: 8%;
+        margin-left: 15%;
         padding-top: 3%;
-}
-
-@media (max-width: 5000px) {
-    .items_list {
-        grid-template-columns: repeat(3, 28%);
-    }
-}
-
-@media (max-width: 1200px) {
-    .items_list {
-        grid-template-columns: repeat(2, 42%);
-    }
-}
-
-@media (max-width: 800px) {
-    .items_list {
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(1, 84%);
-        font-size: 17px;
-    }
 }
 
 .item {
     text-align: center;
-    margin-bottom: 5%;
+    margin-bottom: 10%;
 }
 
 .item p, span {
@@ -232,14 +289,11 @@ input:hover {
     border-width: 1px;
 }
 .cart_item_image {
-    width: 30px;
-    height: 30px;
     margin-top: 15px;
     margin-right: 20%;
 }
 
 .item_preview {
-    width: 30%;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 10%;
@@ -336,6 +390,7 @@ input:hover {
     border-radius: 15px;
     border-width: 1px;
     margin-top: 1%;
+    margin-bottom: 2%;
 }
 
 .username {
@@ -359,9 +414,35 @@ input:hover {
     font-size: 20px;
 }
 
-.form_template{
-    margin-left: 1%;
+#submit_btn{
+    border: solid;
+    border-radius: 15px;
+    border-width: 1px;
+    border-color: black;
     margin-top: 1%;
+}
+
+#menu_btn{
+    text-align: center;
+    margin-top: 2%;
+}
+
+.form_page{
+    background: url('../images/header_back.jpg');
+    color: black;
+}
+
+.form_container{
+    border-radius: 60px;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.form_template{
+    display: grid;
+    grid-template-columns: 35% 65%;
+    margin-left: 15%;
+    margin-right: 15%;
+    align-items: end;
 }
 
 .form_template input{
@@ -369,11 +450,12 @@ input:hover {
     border-width: 1px;
 }
 
-.form_template div{
-    align-items: flex-end;
+.cart_checkbox{
+    transform: scale(2);
+    height: auto;
 }
 
-.form_template label{
-    height: 20px;
-    font-weight: bold;
+.errors_container{
+    text-align: center;
+    color: red;
 }

@@ -13,7 +13,6 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ItemCreateRequestDTO {
-    @NotNull(message = "Incorrect name: name can't be null!")
     @NotBlank(message = "Incorrect name: name can't be blank!")
     @Size(min = 5, max = 30, message = "Incorrect name: must be 5 - 30 symbols!")
     private String name;
@@ -25,7 +24,6 @@ public class ItemCreateRequestDTO {
     @NotBlank(message = "Your item must have an author!")
     private String author;
 
-    @NotNull(message = "Incorrect price: price can't be null!")
     @DecimalMin(value = "1", message = "Incorrect price: min 1!")
     @DecimalMax(value = "1000", message = "Incorrect price: max 1000!")
     private BigDecimal price;

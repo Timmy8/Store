@@ -34,6 +34,6 @@ public class UsersAndDTOs {
     }
 
     public static DeliveryAddressCreateDTO validDeliveryAddress(){
-        return new DeliveryAddressCreateDTO("1","1","1","1","1","1" );
+        return new DeliveryAddressCreateDTO("Ethernet","Frankfurt","https","200","01-404","0123456789" );
     }
 }

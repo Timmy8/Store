@@ -5,22 +5,23 @@
     <link rel="stylesheet"  type="text/css" th:href="@{/css/pagesStyle.css}" />
 </head>
 <body>
-    <div class="welcome_title">
-        <h1>Your cart:</h1>
-    </div>
     <div class="top_navigation">
-        <div class="left_corner_buttons">
+        <div class="left_corner_buttons" style="margin-top: 20%;">
             <a href="/items"> <input type="submit" value="Main page"/> </a>
         </div>
 
-        <div class="right_corner_buttons">
+        <div class="welcome_title">
+            <h1>Your cart:</h1>
+        </div>
+
+        <div class="right_corner_buttons" style="margin-top: 20%;">
             <form method="get" th:action="@{/cart/clear}"><input type="submit" value="Clear cart"/></form>
         </div>
     </div>
 
     <div class="cart_items_list">
         <div class="cart_preview">
-            <h3  style="width: 10%">Id         </h3>
+            <h3  style="width: 10%"></h3>
             <h3  style="width: 15%">Image      </h3>
             <h3  style="width: 15%">Name       </h3>
             <h3  style="width: 30%">Description</h3>
@@ -29,18 +30,18 @@
             <h3  style="width: 15%">Creator    </h3>
             <div style="width: 10%">
                 <a th:href="@{/purchase/allCartPurchase}">
-                    <h3>Buy all!(<span th:text="${fullPrice}">Full price</span>)!</h3>
+                    <p style="text-align: center; font-weight: bold; margin-top: 10%;">Buy All!(<span th:text="${fullPrice}">Full price</span>)</p>
                 </a>
             </div>
         </div>
         <div class="cart_item" th:each="item:${items}">
-            <h3   style="width: 10%"    th:text="${item.id}">                   ITEM ID</h3>
+            <div style="width: 10%; text-align: center;"><input type="checkbox" th:name="checked" th:value="${item.id}" class="cart_checkbox"/></div>
             <span style="width: 15%"> <a th:href="@{/items/{id}(id=${item.id})}"><img class="cart_image" th:src="${item.imageURL}" alt="Book image!" /></a></span>
-            <h3   style="width: 15%"   th:text="${item.name}">               ITEM NAME</h3>
-            <h3   style="width: 30%"   th:text="${item.description}"> ITEM DESCRIPTION</h3>
-            <h3   style="width: 15%"   th:text="${item.author}">           ITEM AUTHOR</h3>
-            <h3   style="width: 15%"   th:text="${item.price}">             ITEM PRICE</h3>
-            <h3   style="width: 15%"   th:text="${item.createdBy.username}">   CREATOR</h3>
+            <h3   style="width: 15%"   th:text="${item.name}">NAME</h3>
+            <h3   style="width: 30%"   th:text="${item.description}">DESCRIPTION</h3>
+            <h3   style="width: 15%"   th:text="${item.author}">AUTHOR</h3>
+            <h3   style="width: 15%"   th:text="${item.price}">PRICE</h3>
+            <h3   style="width: 15%"   th:text="${item.createdBy.username}">CREATOR</h3>
             <div  style="width: 10%">
                 <div th:if="${item.available}" >
                     <a  th:href="@{cart/delete?id={id}(id=${item.id})}">

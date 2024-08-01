@@ -42,12 +42,12 @@ public class ItemPurchaseControllerTest {
     @Test
     public void itemPurchaseForm_WithValidPathVariable_ReturnStatusOkAndValidViewAndModelAttribute() throws Exception{
         // when
-        var result = mvc.perform(get("/purchase/{id}", 1));
+        var result = mvc.perform(get("/purchase/{id}", 1L));
 
         // then
         result.andExpect(status().isOk())
                 .andExpect(view().name("form_item_purchase.html"))
-                .andExpect(model().attribute("itemId", 1));
+                .andExpect(model().attribute("itemId", 1L));
     }
 
     @Test
@@ -76,9 +76,9 @@ public class ItemPurchaseControllerTest {
         var result = mvc.perform(post("/purchase/{id}", item.getId()).with(user(user)).flashAttr("deliveryAddress", addressCreateDto));
 
         // then
-        result.andExpect(status().isCreated())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(content().string("Thank you for your purchase\nPurchase number - " + 1L));
+        result.andExpect(status().isOk())
+                .andExpect(model().attribute("purchaseNumber", 1L))
+                .andExpect(view().name("successful_purchase.html"));
     }
 
     @Test
@@ -97,9 +97,10 @@ public class ItemPurchaseControllerTest {
         var result = mvc.perform(post("/purchase/{id}", item.getId()).with(user(user)).flashAttr("deliveryAddress", invalidAddressCreateDto));
 
         // then
-        result.andExpect(status().isBadRequest())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(content().string("Sorry, item is unavailable"));
+        result.andExpect(status().isOk())
+                .andExpect(model().hasErrors())
+                .andExpect(model().attribute("itemId", item.getId()))
+                .andExpect(view().name("form_item_purchase.html"));
     }
 
     @Test

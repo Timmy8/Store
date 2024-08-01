@@ -4,18 +4,22 @@
     <title>Delete item</title>
     <link rel="stylesheet"  type="text/css" th:href="@{/css/pagesStyle.css}" />
 </head>
-<body>
-    <a href="/items"> <input type="submit" value="Main page" sstyle="margin-left: 1%; margin-top: 1%;"/> </a>
-    <form method="post" th:action="@{/delete}" th:object="${deleteItemDTO}" class="form_template">
-        <div><label for="id">     Item id:         <input type="text" name="id" th:value="${id}"/> </label></div>
-        <div><label for="reason"> Deletion reason: <input type="text" name="reason" value="Not valid"/> </label></div>
+<body class="form_page">
+    <div class="form_container">
+        <div id="menu_btn"><a href="/items"><input type="submit" value="← Return" style="border-radius: 15px;"/></a></div>
 
-        <div><input type="submit" value="Delete!" id="submit_btn"/></div>
-    </form>
+        <form method="post" th:action="@{/delete}" th:object="${deleteItemDTO}">
+            <div class="form_template">
+                <label for="id">Item id: </label><input type="text" name="id" th:value="${id}"/>
+                <label for="reason">Deletion reason: </label><input type="text" name="reason" value="Not valid"/>
+            </div>
+            <div style="text-align: center; margin-top: 5%;"><input type="submit" value="Delete!" id="submit_btn"/></div>
+        </form>
 
-    <div class="errors_container">
-        <div th:each="error: ${errors}" class="error_msg">
-            <span th:text="${error}"> error </span>
+        <div class="errors_container">
+            <div th:each="error: ${errors}" class="error_msg">
+                <span th:text="${error}"> error </span>
+            </div>
         </div>
     </div>
 </body>

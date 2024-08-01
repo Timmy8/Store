@@ -4,23 +4,26 @@
     <title>Item purchase form</title>
     <link rel="stylesheet"  type="text/css" th:href="@{/css/pagesStyle.css}" />
 </head>
-<body>
-<a href="/items"><input type="submit" value="Main page" style="margin-left: 1%; margin-top: 1%;"/></a>
+<body class="form_page">
+    <div class="form_container">
+        <div id="menu_btn"><a href="/items"><input type="submit" value="← Return" style="border-radius: 15px;"/></a></div>
 
-<form method="post" th:action="@{/purchase/{id}(id=${itemId})}" th:object="${deliveryAddress}" class="form_template">
-    <div><label> Your full name: <input type="text" name="fullName"/> </label></div>
-    <div><label> City:           <input type="text" name="city"/> </label></div>
-    <div><label> Street:         <input type="text" name="street"/> </label></div>
-    <div><label> House number:   <input type="text" name="houseNumber"/> </label></div>
-    <div><label> ZIP code:       <input type="text" name="zip"/> </label></div>
-    <div><label> Phone number:   <input type="text" name="phoneNumber"/> </label></div>
-
-    <div><input type="submit" value="Submit!" id="submit_btn"/></div>
-</form>
-<div style="margin-top: 5px">
-    <p style="margin: 0" th:each="error: ${errors}">
-        <span th:text="${error}"> error </span>
-    </p>
-</div>
+        <form method="post" th:action="@{/purchase/{id}(id=${itemId})}" th:object="${deliveryAddress}">
+            <div class="form_template">
+                <label> Your full name: </label><input type="text" name="fullName"/>
+                <label> City: </label><input type="text" name="city"/>
+                <label> Street: </label><input type="text" name="street"/>
+                <label> House number: </label><input type="text" name="houseNumber"/>
+                <label> ZIP code: </label><input type="text" name="zip"/>
+                <label> Phone number: </label><input type="text" name="phoneNumber"/>
+            </div>
+            <div style="text-align: center; margin-top: 5%;"><input type="submit" value="Submit!" id="submit_btn"/></div>
+        </form>
+        <div class="errors_container">
+            <p style="margin: 0" th:each="error: ${errors}">
+                <span th:text="${error}"> error </span>
+            </p>
+        </div>
+    </div>
 </body>
 </html>
