@@ -1,6 +1,3 @@
-
-### Link: http://134.122.87.121
-
 ## Instruction for using 'Store' created by 'Timmy8'
 
 ### Information about application creation
