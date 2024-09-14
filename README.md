@@ -7,7 +7,7 @@ This project is an online store platform designed for buying and selling goods. 
 - [Technologies](#technologies)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
-  - [Fill the application.properties file:](#fill-the-application.properties-file)
+  - [Fill the application.properties file:](#fill-the-applicationproperties-file)
   - [Clone the repository:](#clone-the-repository)
   - [Running with Maven:](#running-with-maven)
   - [Running with Docker:](#running-with-docker)
