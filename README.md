@@ -47,7 +47,7 @@ To run this project, you'll need:
 
 ## Installation
 
-### 1. Fill the application.properties file
+### Fill the application.properties file
 Set up the database:
 Create a MySQL database and configure the connection in the application.properties file located in src/main/resources/.
 
@@ -79,7 +79,7 @@ If you want to see all debug processes, remove the # sign in debug section in th
 
 > logging.level.web=debug
 
-### 2. Clone the repository:
+### Clone the repository:
 
 ```bash
 git clone https://github.com/Timmy8/Store.git
